@@ -1,0 +1,184 @@
+[gd_scene load_steps=10 format=3 uid="uid://buok2hnf4ctos"]
+
+[ext_resource type="Script" path="res://scripts/gravity_swinger.gd" id="1_1fnfs"]
+[ext_resource type="Texture2D" uid="uid://b31s4xifwf1x6" path="res://assets/MecTile.png" id="2_vq2u5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n5k5t"]
+size = Vector2(272, 272)
+
+[sub_resource type="Animation" id="Animation_lp505"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fan:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ir8ha"]
+resource_name = "new_animation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fan:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vy2ix"]
+_data = {
+"RESET": SubResource("Animation_lp505"),
+"new_animation": SubResource("Animation_ir8ha")
+}
+
+[sub_resource type="Animation" id="Animation_i1mi8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArrowWarnings:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_la1ph"]
+resource_name = "new_animation"
+length = 2.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArrowWarnings:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1, 2.2, 2.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.835294), Color(1, 1, 1, 0.835294), Color(1, 1, 1, 0.164706), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hfyd8"]
+_data = {
+"RESET": SubResource("Animation_i1mi8"),
+"new_animation": SubResource("Animation_la1ph")
+}
+
+[node name="GravitySwinger" type="Node2D"]
+script = ExtResource("1_1fnfs")
+
+[node name="areaBG" type="Sprite2D" parent="."]
+modulate = Color(0.784314, 0.784314, 0.164706, 0.164706)
+position = Vector2(-3.8147e-06, -3.8147e-06)
+scale = Vector2(136, 136)
+texture = ExtResource("2_vq2u5")
+region_enabled = true
+region_rect = Rect2(64, 23, 2, 2)
+
+[node name="ArrowWarnings" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+
+[node name="Arrow1" type="Sprite2D" parent="ArrowWarnings"]
+position = Vector2(-72, -56)
+texture = ExtResource("2_vq2u5")
+region_enabled = true
+region_rect = Rect2(52, 20, 19, 13)
+
+[node name="Arrow5" type="Sprite2D" parent="ArrowWarnings"]
+position = Vector2(-104, -96)
+texture = ExtResource("2_vq2u5")
+region_enabled = true
+region_rect = Rect2(52, 20, 19, 13)
+
+[node name="Arrow2" type="Sprite2D" parent="ArrowWarnings"]
+position = Vector2(72, -56)
+texture = ExtResource("2_vq2u5")
+region_enabled = true
+region_rect = Rect2(52, 20, 19, 13)
+
+[node name="Arrow6" type="Sprite2D" parent="ArrowWarnings"]
+position = Vector2(104, -96)
+texture = ExtResource("2_vq2u5")
+region_enabled = true
+region_rect = Rect2(52, 20, 19, 13)
+
+[node name="Arrow3" type="Sprite2D" parent="ArrowWarnings"]
+position = Vector2(72, 56)
+texture = ExtResource("2_vq2u5")
+region_enabled = true
+region_rect = Rect2(52, 20, 19, 13)
+
+[node name="Arrow7" type="Sprite2D" parent="ArrowWarnings"]
+position = Vector2(104, 96)
+texture = ExtResource("2_vq2u5")
+region_enabled = true
+region_rect = Rect2(52, 20, 19, 13)
+
+[node name="Arrow4" type="Sprite2D" parent="ArrowWarnings"]
+position = Vector2(-72, 56)
+texture = ExtResource("2_vq2u5")
+region_enabled = true
+region_rect = Rect2(52, 20, 19, 13)
+
+[node name="Arrow8" type="Sprite2D" parent="ArrowWarnings"]
+position = Vector2(-104, 96)
+texture = ExtResource("2_vq2u5")
+region_enabled = true
+region_rect = Rect2(52, 20, 19, 13)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-3.8147e-06, 0)
+shape = SubResource("RectangleShape2D_n5k5t")
+
+[node name="mech" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_vq2u5")
+region_enabled = true
+region_rect = Rect2(0, 0, 51, 51)
+
+[node name="fan" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_vq2u5")
+region_enabled = true
+region_rect = Rect2(52, 0, 19, 19)
+
+[node name="fanAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vy2ix")
+}
+autoplay = "new_animation"
+speed_scale = 0.666
+
+[node name="ArrowsAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hfyd8")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.85
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,20 @@
+keys,en,pt,de
+TITLE,Atom Y,Atom Porque, Atom Ü
+GAME_TITLE_TM,ou,?,äö
+
+MENU_PLAY,Play,Jogar,Spiel
+MENU_RESUME,Resume,Continuar,Fortsetzen
+MENU_OPTIONS,Options,Opções,Optionen
+MENU_EXIT,Exit,Sair,Beenden
+
+OPTIONS_SOUND,Sound,Som,Ton
+OPTIONS_LANG,Text Language,Idioma,Textsprache
+OPTIONS_BACK,Back,Voltar,Zurück
+
+END_MSG_1,An atom in the right place can have a huge impact...,Um átomo no sitio certo pode ter um impacto enorme...,Ein Atom am richtigen Ort kann enorme Auswirkungen haben ...
+END_MSG_2,and you have about 7 billion billion billions of them,e tu tens cerca de 7 biliões de biliões de biliões deles,und Sie haben etwa 7 Milliarden Milliarden Milliarden davon
+END_Q,Did you Win the game?,Ganhaste o jogo?,Haben Sie das Spiel gewonnen?
+END_YES,YES,SIM,JA
+END_NO,NO,NÃO,NEIN
+END_WIN,Congratulations!,Parabéns!,Gratuliere!
+END_LOSE,Game Over,Game Over,Game Over

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://3ps8853uualf"]
+
+[ext_resource type="Theme" uid="uid://caay8qobt5r4m" path="res://Styles/menu_theme.tres" id="1_prkoc"]
+[ext_resource type="Script" path="res://scripts/menu_btn.gd" id="2_f680t"]
+
+[node name="MenuBtn" type="Button"]
+custom_minimum_size = Vector2(0, 69)
+size_flags_vertical = 3
+theme = ExtResource("1_prkoc")
+theme_override_font_sizes/font_size = 30
+text = "MENU_"
+script = ExtResource("2_f680t")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

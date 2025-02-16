@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpu3ya887a0v3"]
+
+[ext_resource type="Script" path="res://scripts/trap.gd" id="1_tcqs7"]
+[ext_resource type="Texture2D" uid="uid://b31s4xifwf1x6" path="res://assets/MecTile.png" id="2_n6utp"]
+[ext_resource type="AudioStream" uid="uid://dt1j0bvv3xaxr" path="res://assets/sounds/trap.ogg" id="3_lie8q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52loe"]
+size = Vector2(16, 16)
+
+[node name="Trap" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_tcqs7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_n6utp")
+region_enabled = true
+region_rect = Rect2(56, 36, 14, 14)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_52loe")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_lie8q")
+bus = &"SFX"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

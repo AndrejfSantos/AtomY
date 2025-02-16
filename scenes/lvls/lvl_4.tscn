@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://c6fucut1ky7mr"]
+
+[ext_resource type="Script" path="res://scripts/lvl.gd" id="1_n8h32"]
+[ext_resource type="Texture2D" uid="uid://dism8ewpi1y5s" path="res://assets/basicTile.png" id="2_nn8ei"]
+[ext_resource type="PackedScene" uid="uid://bm03gjaduq8xw" path="res://scenes/green_path.tscn" id="3_nr4iv"]
+[ext_resource type="PackedScene" uid="uid://cv3wndhmpg6om" path="res://scenes/door.tscn" id="4_pxbij"]
+[ext_resource type="PackedScene" uid="uid://bgpahpl35r0s8" path="res://scenes/pickable_electron.tscn" id="5_rub4u"]
+[ext_resource type="PackedScene" uid="uid://dem1m44urvrve" path="res://scenes/laser.tscn" id="6_1lf0p"]
+[ext_resource type="PackedScene" uid="uid://du6smcuy0iy82" path="res://scenes/player.tscn" id="7_ygrtb"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0c1e6"]
+texture = ExtResource("2_nn8ei")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 8, -4, 8, 4, 4, 4, 4, 8, -4, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4, 4, -4, 4, 8, -4, 8, -4, 4, -8, 4)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -8, 4, -8, 4, 8, -4, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -8, 4, -8, 4, -4, 8, -4, 8, 4, -4, 4)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -8, 4, -8, 4, 4, -8, 4, -8, -4, -4, -4)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4, 8, -4, 8, 4, -8, 4)
+
+[sub_resource type="TileSet" id="TileSet_bo45h"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_0c1e6")
+
+[sub_resource type="Curve2D" id="Curve2D_byffx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 168, 200, 0, 0, 0, 0, 216, 200, 0, 0, 0, 0, 216, 40, 0, 0, 0, 0, 472, 40, 0, 0, 0, 0, 472, -184, 0, 0, 0, 0, 216, -184, 0, 0, 0, 0, 216, -248, 0, 0, 0, 0, 760, -248, 0, 0, 0, 0, 760, -184, 0, 0, 0, 0, 504, -184, 0, 0, 0, 0, 504, -72)
+}
+point_count = 11
+
+[node name="AtomGame" type="Node2D"]
+script = ExtResource("1_n8h32")
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(2, 2)
+tile_set = SubResource("TileSet_bo45h")
+format = 2
+layer_0/tile_data = PackedInt32Array(65542, 0, 0, 1179654, 0, 1, 65543, 131072, 1, 1179655, 131072, 1, 65544, 131072, 1, 1179656, 131072, 1, 65545, 131072, 1, 262153, 0, 0, 393225, 0, 1, 589833, 0, 0, 655369, 0, 1, 851977, 0, 0, 65546, 131072, 1, 262154, 131072, 1, 393226, 131072, 1, 589834, 131072, 1, 655370, 131072, 1, 851978, 131072, 1, 65547, 131072, 1, 262155, 131072, 1, 393227, 131072, 1, 589835, 131072, 1, 655371, 131072, 1, 851979, 131072, 1, 65548, 131072, 1, 262156, 131072, 1, 393228, 131072, 1, 589836, 131072, 1, 655372, 131072, 1, 851980, 131072, 1, 65549, 131072, 1, 262157, 131072, 1, 393229, 131072, 1, 589837, 131072, 1, 655373, 131072, 1, 851981, 131072, 1, 65550, 131072, 1, 262158, 131072, 1, 393230, 131072, 1, 851982, 131072, 1, 65551, 131072, 1, 262159, 131072, 1, 393231, 131072, 1, 851983, 131072, 1, 65552, 131072, 1, 262160, 131072, 1, 393232, 131072, 1, 851984, 131072, 1, 65553, 131072, 1, 262161, 131072, 1, 393233, 65536, 0, 458769, 131072, 0, 524305, 131072, 0, 589841, 131072, 0, 655377, 131072, 0, 720913, 131072, 0, 786449, 131072, 0, 851985, 65536, 1, 65554, 131072, 1, 262162, 131072, 1, 393234, 0, 0, 851986, 0, 1, 65555, 131072, 1, 262163, 131072, 1, 393235, 131072, 1, 851987, 131072, 1, 65556, 131072, 1, 262164, 131072, 1, 393236, 131072, 1, 851988, 131072, 1, 65557, 131072, 1, 262165, 131072, 1, 393237, 131072, 1, 589845, 0, 0, 655381, 0, 1, 851989, 131072, 1, 65558, 131072, 1, 262166, 131072, 1, 393238, 131072, 1, 589846, 131072, 1, 655382, 131072, 1, 851990, 131072, 1, 65559, 131072, 1, 262167, 131072, 1, 393239, 131072, 1, 589847, 131072, 1, 655383, 131072, 1, 851991, 131072, 1, 65560, 131072, 1, 262168, 131072, 1, 393240, 131072, 1, 589848, 131072, 1, 655384, 131072, 1, 851992, 131072, 1, 65561, 131072, 1, 262169, 131072, 1, 393241, 131072, 1, 589849, 131072, 1, 655385, 131072, 1, 851993, 131072, 1, 65562, 131072, 1, 1179674, 0, 1, 65563, 131072, 1, 1179675, 131072, 1, 65564, 131072, 1, 1179676, 131072, 1, 131078, 131072, 0, 196614, 131072, 0, 262150, 131072, 0, 327686, 131072, 0, 393222, 131072, 0, 458758, 131072, 0, 524294, 131072, 0, 589830, 131072, 0, 655366, 131072, 0, 720902, 131072, 0, 786438, 131072, 0, 851974, 131072, 0, 917510, 131072, 0, 983046, 131072, 0, 1048582, 131072, 0, 1114118, 131072, 0, 327689, 131072, 0, 917513, 131072, 0, 983049, 131072, 0, 1048585, 131072, 0, 1114121, 131072, 0, 1179657, 65536, 1, 589838, 65536, 0, 655374, 65536, 1, 458770, 131072, 0, 524306, 131072, 0, 589842, 131072, 0, 655378, 131072, 0, 720914, 131072, 0, 786450, 131072, 0, 262170, 65536, 0, 327706, 131072, 0, 393242, 65536, 1, 589850, 65536, 0, 655386, 65536, 1, 851994, 65536, 0, 917530, 131072, 0, 983066, 131072, 0, 1048602, 131072, 0, 1114138, 131072, 0, 65565, 65536, 0, 131101, 131072, 0, 196637, 131072, 0, 262173, 131072, 0, 327709, 131072, 0, 393245, 131072, 0, 458781, 131072, 0, 524317, 131072, 0, 589853, 131072, 0, 655389, 131072, 0, 720925, 131072, 0, 786461, 131072, 0, 851997, 131072, 0, 917533, 131072, 0, 983069, 131072, 0, 1048605, 131072, 0, 1114141, 131072, 0, 1179677, 65536, 1)
+
+[node name="GreenPath" parent="." instance=ExtResource("3_nr4iv")]
+position = Vector2(88, 392)
+curve = SubResource("Curve2D_byffx")
+
+[node name="Door" parent="." instance=ExtResource("4_pxbij")]
+position = Vector2(640, 320)
+to_lvl = "5"
+
+[node name="PickableElectron" parent="." instance=ExtResource("5_rub4u")]
+position = Vector2(320, 96)
+
+[node name="PickableElectron2" parent="." instance=ExtResource("5_rub4u")]
+position = Vector2(832, 96)
+
+[node name="PickableElectron3" parent="." instance=ExtResource("5_rub4u")]
+position = Vector2(896, 384)
+
+[node name="PickableElectron4" parent="." instance=ExtResource("5_rub4u")]
+position = Vector2(896, 552)
+
+[node name="Laser" parent="." instance=ExtResource("6_1lf0p")]
+position = Vector2(256, 320)
+
+[node name="Laser2" parent="." instance=ExtResource("6_1lf0p")]
+position = Vector2(896, 320)
+
+[node name="Laser3" parent="." instance=ExtResource("6_1lf0p")]
+position = Vector2(768, 384)
+rotation = 1.5708
+
+[node name="Laser4" parent="." instance=ExtResource("6_1lf0p")]
+position = Vector2(768, 256)
+rotation = 1.5708
+
+[node name="Laser5" parent="." instance=ExtResource("6_1lf0p")]
+position = Vector2(576, 96)
+rotation = 1.5708
+
+[node name="Player" parent="." instance=ExtResource("7_ygrtb")]
+position = Vector2(256, 552)

@@ -1,0 +1,154 @@
+[gd_scene load_steps=4 format=3 uid="uid://cg4ljh6gvcw0j"]
+
+[ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_elbx7"]
+[ext_resource type="Theme" uid="uid://caay8qobt5r4m" path="res://Styles/menu_theme.tres" id="2_7jouw"]
+[ext_resource type="PackedScene" uid="uid://3ps8853uualf" path="res://scenes/menu_btn.tscn" id="2_yjeei"]
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_elbx7")
+start_n_pause = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -750.0
+offset_top = -400.0
+offset_right = 750.0
+offset_bottom = 400.0
+color = Color(0, 0, 0, 0.490196)
+
+[node name="Title" type="Label" parent="."]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.0
+offset_top = 25.0
+offset_right = 76.0
+offset_bottom = 108.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_font_sizes/font_size = 60
+text = "TITLE"
+horizontal_alignment = 1
+
+[node name="Title_tm" type="Label" parent="."]
+layout_mode = 2
+offset_left = 650.0
+offset_top = 42.0
+offset_right = 728.0
+offset_bottom = 56.0
+grow_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = "GAME_TITLE_TM"
+
+[node name="StartContainer" type="VBoxContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -74.0
+offset_right = 82.0
+offset_bottom = 158.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Play" parent="StartContainer" instance=ExtResource("2_yjeei")]
+layout_mode = 2
+text = "MENU_PLAY"
+
+[node name="Resume" parent="StartContainer" instance=ExtResource("2_yjeei")]
+layout_mode = 2
+text = "MENU_RESUME"
+
+[node name="Options" parent="StartContainer" instance=ExtResource("2_yjeei")]
+layout_mode = 2
+text = "MENU_OPTIONS"
+
+[node name="OptionsContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -74.0
+offset_right = 82.0
+offset_bottom = 158.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="SoundCheckBox" parent="OptionsContainer" instance=ExtResource("2_yjeei")]
+layout_mode = 2
+text = "OPTIONS_SOUND"
+
+[node name="CheckBox" type="CheckBox" parent="OptionsContainer/SoundCheckBox"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -22.5
+offset_right = -21.0
+offset_bottom = 25.5
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+focus_mode = 0
+mouse_filter = 2
+button_mask = 0
+
+[node name="LangLabel" type="Label" parent="OptionsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "OPTIONS_LANG"
+horizontal_alignment = 1
+
+[node name="LangOption" type="OptionButton" parent="OptionsContainer"]
+custom_minimum_size = Vector2(0, 69)
+layout_mode = 2
+theme = ExtResource("2_7jouw")
+theme_override_font_sizes/font_size = 30
+alignment = 1
+selected = 0
+allow_reselect = true
+item_count = 3
+popup/item_0/text = "English"
+popup/item_1/text = "Português"
+popup/item_1/id = 1
+popup/item_2/text = "Deutsch"
+popup/item_2/id = 2
+
+[node name="Back" parent="OptionsContainer" instance=ExtResource("2_yjeei")]
+layout_mode = 2
+text = "OPTIONS_BACK"
+
+[connection signal="draw" from="." to="." method="_on_draw"]
+[connection signal="item_rect_changed" from="." to="." method="_on_item_rect_changed"]
+[connection signal="pressed" from="StartContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="StartContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="StartContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="OptionsContainer/SoundCheckBox" to="." method="_on_sound_check_box_toggled"]
+[connection signal="item_selected" from="OptionsContainer/LangOption" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="OptionsContainer/Back" to="." method="_on_back_pressed"]

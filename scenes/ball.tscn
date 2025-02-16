@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwptn1gqscqu2"]
+
+[ext_resource type="Script" path="res://scripts/ball.gd" id="1_x1r4p"]
+
+[node name="ball" type="Polygon2D"]
+script = ExtResource("1_x1r4p")
+radius = 6.0

@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://by4ciyiklsixs"]
+
+[ext_resource type="Script" path="res://scripts/lvl.gd" id="1_cjuyo"]
+[ext_resource type="Texture2D" uid="uid://dism8ewpi1y5s" path="res://assets/basicTile.png" id="2_8uh8o"]
+[ext_resource type="PackedScene" uid="uid://bm03gjaduq8xw" path="res://scenes/green_path.tscn" id="3_psjfs"]
+[ext_resource type="PackedScene" uid="uid://cv3wndhmpg6om" path="res://scenes/door.tscn" id="4_wf5j6"]
+[ext_resource type="PackedScene" uid="uid://du6smcuy0iy82" path="res://scenes/player.tscn" id="5_4auhp"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0c1e6"]
+texture = ExtResource("2_8uh8o")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 8, -4, 8, 4, 4, 4, 4, 8, -4, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4, 4, -4, 4, 8, -4, 8, -4, 4, -8, 4)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -8, 4, -8, 4, 8, -4, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -8, 4, -8, 4, -4, 8, -4, 8, 4, -4, 4)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -8, 4, -8, 4, 4, -8, 4, -8, -4, -4, -4)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4, 8, -4, 8, 4, -8, 4)
+
+[sub_resource type="TileSet" id="TileSet_bo45h"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_0c1e6")
+
+[sub_resource type="Curve2D" id="Curve2D_byffx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 264, -120, 0, 0, 0, 0, 344, -120, 0, 0, 0, 0, 344, -248, 0, 0, 0, 0, 504, -248, 0, 0, 0, 0, 504, -376, 0, 0, 0, 0, 632, -376, 0, 0, 0, 0, 632, -456)
+}
+point_count = 7
+
+[sub_resource type="Curve2D" id="Curve2D_7yjap"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 264, -120, 0, 0, 0, 0, 184, -120, 0, 0, 0, 0, 184, -344, 0, 0, 0, 0, 408, -344, 0, 0, 0, 0, 408, -536, 0, 0, 0, 0, 632, -536, 0, 0, 0, 0, 632, -456)
+}
+point_count = 7
+
+[node name="AtomGame" type="Node2D"]
+script = ExtResource("1_cjuyo")
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(2, 2)
+tile_set = SubResource("TileSet_bo45h")
+format = 2
+layer_0/tile_data = PackedInt32Array(458762, 0, 0, 458763, 131072, 1, 458764, 131072, 1, 458765, 131072, 1, 458766, 131072, 1, 458767, 131072, 1, 458768, 131072, 1, 458769, 65536, 1, 393233, 131072, 0, 327697, 131072, 0, 262161, 131072, 0, 196625, 131072, 0, 131089, 131072, 0, 65553, 0, 0, 65554, 131072, 1, 65555, 131072, 1, 65556, 131072, 1, 65557, 131072, 1, 65558, 131072, 1, 65559, 131072, 1, 65560, 65536, 0, 393240, 65536, 1, 655370, 131072, 0, 655375, 0, 0, 655376, 131072, 1, 655377, 131072, 1, 655378, 131072, 1, 655379, 131072, 1, 655380, 65536, 1, 393236, 0, 0, 458772, 131072, 0, 524308, 131072, 0, 589844, 131072, 0, 393237, 131072, 1, 393238, 131072, 1, 393239, 131072, 1, 131096, 131072, 0, 196632, 131072, 0, 262168, 131072, 0, 327704, 131072, 0, 524298, 131072, 0, 589834, 131072, 0, 720906, 131072, 0, 786442, 131072, 0, 851978, 131072, 0, 917514, 0, 1, 720911, 131072, 0, 786447, 131072, 0, 851983, 131072, 0, 917519, 65536, 1, 917515, 131072, 1, 917516, 131072, 1, 917517, 131072, 1, 917518, 131072, 1)
+
+[node name="GreenPath" parent="." instance=ExtResource("3_psjfs")]
+position = Vector2(152, 584)
+curve = SubResource("Curve2D_byffx")
+
+[node name="GreenPath2" parent="." instance=ExtResource("3_psjfs")]
+position = Vector2(152, 584)
+curve = SubResource("Curve2D_7yjap")
+
+[node name="Door" parent="." instance=ExtResource("4_wf5j6")]
+position = Vector2(733, 128)
+to_lvl = "2"
+
+[node name="Player" parent="." instance=ExtResource("5_4auhp")]
+position = Vector2(416, 416)
